@@ -1,12 +1,21 @@
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.jetbrains.skija</groupId>
+
+	<parent>
+		<groupId>org.jetbrains.skija</groupId>
+		<artifactId>skija</artifactId>
+		<version>0.0.0-local</version>
+	</parent>
+
 	<artifactId>skija-shared</artifactId>
-	<version>0.0.0-local</version>
+
 	<properties>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<skia.release.version>m92-f46c37ba85-2</skia.release.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -22,17 +31,54 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
-	<distributionManagement>
-		<repository>
-			<id>space-maven</id>
-			<url>https://packages.jetbrains.team/maven/p/skija/maven</url>
-		</repository>
-	</distributionManagement>
+
 	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>com.googlecode.maven-download-plugin</groupId>
+					<artifactId>download-maven-plugin</artifactId>
+					<version>1.6.3</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M5</version>
+				<configuration>
+					<skipTests>true</skipTests>
+				</configuration>
+			</plugin>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
+				<configuration>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>1.18.20</version>
+						</path>
+						<path>
+							<groupId>org.jetbrains</groupId>
+							<artifactId>annotations</artifactId>
+							<version>20.1.0</version>
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.2.0</version>
+				<extensions>false</extensions>
+				<inherited>true</inherited>
+				<configuration>
+					<classifier>${skija.platform}</classifier>
+					<!-- <finalName>skia-${skija.platform}-${project.version}</finalName> -->
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.projectlombok</groupId>
@@ -40,6 +86,7 @@
 				<version>1.18.20.0</version>
 				<configuration>
 					<sourceDirectory>src/main/java</sourceDirectory>
+					<verbose>true</verbose>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -54,12 +101,16 @@
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+					<classifier>${skija.platform}-source</classifier>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>3.2.0</version>
 				<configuration>
+					<classifier>${skija.platform}-doc</classifier>
 					<reportOutputDirectory>../docs</reportOutputDirectory>
 					<sourcepath>target/generated-sources/delombok</sourcepath>
 					<show>public</show>
@@ -77,11 +128,95 @@
 		</plugins>
 	</build>
 
+	<profiles>
+		<profile>
+			<id>windows</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+				<property>
+					<name>skija.platform</name>
+					<value>windows</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.googlecode.maven-download-plugin</groupId>
+						<artifactId>download-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>download-skia</id>
+								<phase>generate-resources</phase>
+								<goals>
+									<goal>wget</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<url>https://github.com/JetBrains/skia-build/releases/download/${skia.release.version}/Skia-${skia.release.version}-windows-Release-x64.zip</url>
+							<unpack>true</unpack>
+							<outputDirectory>${project.build.directory}/${skia.release.version}</outputDirectory>
+						</configuration>
+					</plugin>
+					<plugin>
+						<artifactId>maven-resources-plugin</artifactId>
+						<version>3.2.0</version>
+						<executions>
+							<execution>
+								<id>copy-resources</id>
+								<phase>prepare-package</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>${project.build.directory}/classes</outputDirectory>
+									<resources>
+										<resource>
+											<directory>${project.build.directory}/${skia.release.version}/out/Release-x64</directory>
+											<includes>
+												<include>icudtl.dat</include>
+											</includes>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>macos-arm64</id>
+			<activation>
+				<property>
+					<name>skija.platform</name>
+					<value>macos-arm64</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.googlecode.maven-download-plugin</groupId>
+						<artifactId>download-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>download-skia</id>
+								<phase>generate-resources</phase>
+								<goals>
+									<goal>wget</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<url>https://github.com/JetBrains/skia-build/releases/download/${skia.release.version}/Skia-${skia.release.version}-macos-Release-arm64.zip</url>
+							<unpack>true</unpack>
+							<outputDirectory>${project.build.directory}/${skia.release.version}</outputDirectory>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
-	<repositories>
-		<repository>
-			<id>space-maven</id>
-			<url>https://packages.jetbrains.team/maven/p/skija/maven</url>
-		</repository>
-	</repositories>
+
 </project>

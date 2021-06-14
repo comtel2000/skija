@@ -1,19 +1,12 @@
-package org.jetbrains.skija.platform;
-
-import static org.jetbrains.skija.platform.test.TestRunner.assertArrayEquals;
-import static org.jetbrains.skija.platform.test.TestRunner.assertEquals;
-import static org.jetbrains.skija.platform.test.TestRunner.assertNotEquals;
+package org.jetbrains.skija;
 
 import java.util.Arrays;
+import org.jetbrains.skija.test.Executable;
+import org.jetbrains.skija.test.TestRunner;
 
-import org.jetbrains.skija.Data;
-import org.jetbrains.skija.FontFamilyName;
-import org.jetbrains.skija.FontStyle;
-import org.jetbrains.skija.FontVariation;
-import org.jetbrains.skija.FontVariationAxis;
-import org.jetbrains.skija.Typeface;
-import org.jetbrains.skija.platform.test.Executable;
-import org.jetbrains.skija.platform.test.TestRunner;
+import static org.jetbrains.skija.test.TestRunner.assertArrayEquals;
+import static org.jetbrains.skija.test.TestRunner.assertEquals;
+import static org.jetbrains.skija.test.TestRunner.assertNotEquals;
 
 public class TypefaceTest implements Executable {
     @Override

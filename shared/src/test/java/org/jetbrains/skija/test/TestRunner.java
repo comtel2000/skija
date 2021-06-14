@@ -1,4 +1,4 @@
-package org.jetbrains.skija.platform.test;
+package org.jetbrains.skija.test;
 
 import java.lang.reflect.Method;
 import java.util.ArrayDeque;
@@ -8,10 +8,7 @@ import java.util.Deque;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-
-import org.jetbrains.skija.Matrix33;
-import org.jetbrains.skija.Point;
-import org.jetbrains.skija.platform.*;
+import org.jetbrains.skija.*;
 
 public class TestRunner {
     public int asserts   = 0;

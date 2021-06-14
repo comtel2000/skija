@@ -1,15 +1,9 @@
-package org.jetbrains.skija.platform;
-
-import static org.jetbrains.skija.platform.test.TestRunner.*;
+package org.jetbrains.skija;
 
 import java.io.*;
 import java.nio.file.*;
-
-import org.jetbrains.skija.EncodedImageFormat;
-import org.jetbrains.skija.Paint;
-import org.jetbrains.skija.Surface;
-import org.jetbrains.skija.Path;
-import org.jetbrains.skija.platform.test.*;
+import org.jetbrains.skija.test.*;
+import static org.jetbrains.skija.test.TestRunner.*;
 
 public class ImageTest implements Executable {
     @Override

@@ -1,13 +1,7 @@
-package org.jetbrains.skija.platform;
+package org.jetbrains.skija;
 
-import static org.jetbrains.skija.platform.test.TestRunner.*;
-
-import org.jetbrains.skija.Bitmap;
-import org.jetbrains.skija.ContentChangeMode;
-import org.jetbrains.skija.IRect;
-import org.jetbrains.skija.ImageInfo;
-import org.jetbrains.skija.Surface;
-import org.jetbrains.skija.platform.test.*;
+import org.jetbrains.skija.test.*;
+import static org.jetbrains.skija.test.TestRunner.*;
 
 public class SurfaceTest implements Executable {
     @Override

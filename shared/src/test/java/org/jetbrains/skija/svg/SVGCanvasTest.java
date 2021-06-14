@@ -1,19 +1,11 @@
-package org.jetbrains.skija.platform.svg;
-
-import static org.jetbrains.skija.platform.test.TestRunner.*;
+package org.jetbrains.skija.svg;
 
 import java.io.*;
 import java.nio.charset.*;
+import org.jetbrains.skija.*;
+import org.jetbrains.skija.test.*;
 
-import org.jetbrains.skija.Canvas;
-import org.jetbrains.skija.OutputWStream;
-import org.jetbrains.skija.Paint;
-import org.jetbrains.skija.PaintMode;
-import org.jetbrains.skija.Path;
-import org.jetbrains.skija.Rect;
-import org.jetbrains.skija.platform.*;
-import org.jetbrains.skija.platform.test.*;
-import org.jetbrains.skija.svg.SVGCanvas;
+import static org.jetbrains.skija.test.TestRunner.*;
 
 public class SVGCanvasTest implements Executable {
     @Override

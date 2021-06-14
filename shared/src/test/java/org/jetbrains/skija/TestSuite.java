@@ -1,8 +1,8 @@
-package org.jetbrains.skija.platform;
+package org.jetbrains.skija;
 
-import org.jetbrains.skija.platform.paragraph.*;
-import org.jetbrains.skija.platform.svg.*;
-import org.jetbrains.skija.platform.test.TestRunner;
+import org.jetbrains.skija.test.TestRunner;
+import org.jetbrains.skija.paragraph.*;
+import org.jetbrains.skija.svg.*;
 
 public class TestSuite {
     public static void main(String[] args) {

@@ -1,13 +1,12 @@
-package org.jetbrains.skija.platform;
-
-import static org.jetbrains.skija.platform.test.TestRunner.assertArrayEquals;
-import static org.jetbrains.skija.platform.test.TestRunner.assertEquals;
-import static org.jetbrains.skija.platform.test.TestRunner.assertNotEquals;
+package org.jetbrains.skija;
 
 import java.nio.charset.StandardCharsets;
 
-import org.jetbrains.skija.Data;
-import org.jetbrains.skija.platform.test.Executable;
+import org.jetbrains.skija.test.Executable;
+
+import static org.jetbrains.skija.test.TestRunner.assertArrayEquals;
+import static org.jetbrains.skija.test.TestRunner.assertEquals;
+import static org.jetbrains.skija.test.TestRunner.assertNotEquals;
 
 public class DataTest implements Executable {
     @Override

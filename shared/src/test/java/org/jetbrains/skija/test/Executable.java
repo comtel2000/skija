@@ -1,4 +1,4 @@
-package org.jetbrains.skija.platform.test;
+package org.jetbrains.skija.test;
 
 @FunctionalInterface
 public interface Executable {

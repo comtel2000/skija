@@ -1,12 +1,8 @@
-package org.jetbrains.skija.platform;
-
-import static org.jetbrains.skija.platform.test.TestRunner.*;
+package org.jetbrains.skija;
 
 import java.util.*;
-
-import org.jetbrains.skija.Color;
-import org.jetbrains.skija.Color4f;
-import org.jetbrains.skija.platform.test.*;
+import org.jetbrains.skija.test.*;
+import static org.jetbrains.skija.test.TestRunner.*;
 
 public class ColorTest implements Executable {
     @Override

@@ -1,12 +1,7 @@
-package org.jetbrains.skija.platform;
+package org.jetbrains.skija;
 
-import static org.jetbrains.skija.platform.test.TestRunner.*;
-
-import org.jetbrains.skija.Matrix33;
-import org.jetbrains.skija.Path;
-import org.jetbrains.skija.PathMeasure;
-import org.jetbrains.skija.Point;
-import org.jetbrains.skija.platform.test.*;
+import org.jetbrains.skija.test.*;
+import static org.jetbrains.skija.test.TestRunner.*;
 
 public class PathMeasureTest implements Executable {
     @Override

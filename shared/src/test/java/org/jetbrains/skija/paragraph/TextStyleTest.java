@@ -1,12 +1,10 @@
-package org.jetbrains.skija.platform.paragraph;
+package org.jetbrains.skija.paragraph;
 
-import static org.jetbrains.skija.platform.test.TestRunner.*;
+import org.jetbrains.skija.*;
+import org.jetbrains.skija.paragraph.*;
+import org.jetbrains.skija.test.*;
 
-import org.jetbrains.skija.paragraph.TextStyle;
-import org.jetbrains.skija.paragraph.TextStyleAttribute;
-import org.jetbrains.skija.platform.*;
-import org.jetbrains.skija.platform.paragraph.*;
-import org.jetbrains.skija.platform.test.*;
+import static org.jetbrains.skija.test.TestRunner.*;
 
 public class TextStyleTest implements Executable {
     @Override

@@ -1,11 +1,7 @@
-package org.jetbrains.skija.platform;
+package org.jetbrains.skija;
 
-import static org.jetbrains.skija.platform.test.TestRunner.*;
-
-import org.jetbrains.skija.Font;
-import org.jetbrains.skija.TextLine;
-import org.jetbrains.skija.Typeface;
-import org.jetbrains.skija.platform.test.*;
+import org.jetbrains.skija.test.*;
+import static org.jetbrains.skija.test.TestRunner.*;
 
 public class TextLineTest implements Executable {
     public Font inter36 = new Font(Typeface.makeFromFile("src/test/resources/fonts/InterHinted-Regular.ttf"), 36);

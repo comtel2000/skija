@@ -1,23 +1,13 @@
-package org.jetbrains.skija.platform;
-
-import static org.jetbrains.skija.platform.test.TestRunner.assertArrayEquals;
-import static org.jetbrains.skija.platform.test.TestRunner.assertEquals;
-import static org.jetbrains.skija.platform.test.TestRunner.assertNotEquals;
-import static org.jetbrains.skija.platform.test.TestRunner.assertThrows;
+package org.jetbrains.skija;
 
 import java.util.NoSuchElementException;
+import org.jetbrains.skija.test.Executable;
+import org.jetbrains.skija.test.TestRunner;
 
-import org.jetbrains.skija.Path;
-import org.jetbrains.skija.PathDirection;
-import org.jetbrains.skija.PathFillMode;
-import org.jetbrains.skija.PathSegment;
-import org.jetbrains.skija.PathSegmentMask;
-import org.jetbrains.skija.PathVerb;
-import org.jetbrains.skija.Point;
-import org.jetbrains.skija.RRect;
-import org.jetbrains.skija.Rect;
-import org.jetbrains.skija.platform.test.Executable;
-import org.jetbrains.skija.platform.test.TestRunner;
+import static org.jetbrains.skija.test.TestRunner.assertArrayEquals;
+import static org.jetbrains.skija.test.TestRunner.assertEquals;
+import static org.jetbrains.skija.test.TestRunner.assertNotEquals;
+import static org.jetbrains.skija.test.TestRunner.assertThrows;
 
 public class PathTest implements Executable {
     @Override

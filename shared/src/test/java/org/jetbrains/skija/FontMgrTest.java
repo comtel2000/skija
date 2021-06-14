@@ -1,15 +1,12 @@
-package org.jetbrains.skija.platform;
+package org.jetbrains.skija;
 
-import static org.jetbrains.skija.platform.test.TestRunner.assertArrayEquals;
-import static org.jetbrains.skija.platform.test.TestRunner.assertEquals;
-
-import org.jetbrains.skija.Data;
-import org.jetbrains.skija.FontStyle;
-import org.jetbrains.skija.Typeface;
 import org.jetbrains.skija.paragraph.FontCollection;
 import org.jetbrains.skija.paragraph.TypefaceFontProvider;
-import org.jetbrains.skija.platform.test.Executable;
-import org.jetbrains.skija.platform.test.TestRunner;
+import org.jetbrains.skija.test.Executable;
+import org.jetbrains.skija.test.TestRunner;
+
+import static org.jetbrains.skija.test.TestRunner.assertArrayEquals;
+import static org.jetbrains.skija.test.TestRunner.assertEquals;
 
 public class FontMgrTest implements Executable {
     @Override

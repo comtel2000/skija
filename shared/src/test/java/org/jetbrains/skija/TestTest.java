@@ -1,15 +1,14 @@
-package org.jetbrains.skija.platform;
+package org.jetbrains.skija;
 
-import static org.jetbrains.skija.platform.test.TestRunner.assertArrayEquals;
-import static org.jetbrains.skija.platform.test.TestRunner.assertEquals;
-import static org.jetbrains.skija.platform.test.TestRunner.assertNotEquals;
-import static org.jetbrains.skija.platform.test.TestRunner.assertThrows;
-import static org.jetbrains.skija.platform.test.TestRunner.popStack;
-import static org.jetbrains.skija.platform.test.TestRunner.pushStack;
+import org.jetbrains.skija.test.*;
 
 import java.util.NoSuchElementException;
-
-import org.jetbrains.skija.platform.test.*;
+import static org.jetbrains.skija.test.TestRunner.assertEquals;
+import static org.jetbrains.skija.test.TestRunner.assertNotEquals;
+import static org.jetbrains.skija.test.TestRunner.assertArrayEquals;
+import static org.jetbrains.skija.test.TestRunner.assertThrows;
+import static org.jetbrains.skija.test.TestRunner.pushStack;
+import static org.jetbrains.skija.test.TestRunner.popStack;
 
 public class TestTest implements Executable {
     @Override
